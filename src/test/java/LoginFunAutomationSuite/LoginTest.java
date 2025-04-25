@@ -4,6 +4,7 @@ import java.time.Duration;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 
 public class LoginTest extends BaseTest {
     private final String browserType;
@@ -11,7 +12,7 @@ public class LoginTest extends BaseTest {
     public LoginTest(String browserType) {
         this.browserType = browserType;
     }
-
+    @Step("Launching browser: {browserType}")
     public void launchBrowser() {
         switch (browserType.toLowerCase()) {
             case "chrome":
@@ -25,7 +26,8 @@ public class LoginTest extends BaseTest {
         }
         driver.manage().window().maximize();
     }
-
+    
+    @Step("Running test on {browserType}")
     public void runTest() {
         launchBrowser();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

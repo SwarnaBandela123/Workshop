@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import io.qameta.allure.Step;
+
 public class LoginPage  {
     private WebDriver driver;
 
@@ -22,7 +24,8 @@ public class LoginPage  {
         PageFactory.initElements(driver, this);
     }
 
-    public void login(String user, String pass) {
+    @Step("Logging in with username: {user} and password: {pass}")
+    public void login(String user, String pass) {  	
         username.sendKeys(user);
         password.sendKeys(pass);
         loginButton.click();
